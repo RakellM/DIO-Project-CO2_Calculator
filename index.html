@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>🌿 CO² Emission Calculator</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <h1 class="header__title">🌿 CO² Emission Calculator</h1>
+    <p class="header__subtitle">
+      Estimate carbon emissions based on travel distance and transport mode.
+    </p>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- CALCULATOR FORM -->
+    <form id="calculator-form" class="calculator">
+
+      <!-- ORIGIN -->
+      <div class="calculator__field">
+        <label for="origin" class="calculator__label">Origin</label>
+        <input
+          type="text"
+          id="origin"
+          class="calculator__input"
+          list="city-list"
+          placeholder="Enter origin city"
+        />
+      </div>
+
+      <!-- DESTINATION -->
+      <div class="calculator__field">
+        <label for="destination" class="calculator__label">Destination</label>
+        <input
+          type="text"
+          id="destination"
+          class="calculator__input"
+          list="city-list"
+          placeholder="Enter destination city"
+        />
+      </div>
+
+      <!-- DISTANCE -->
+      <div class="calculator__field">
+        <label for="distance" class="calculator__label">Distance (km)</label>
+        <input
+          type="number"
+          id="distance"
+          class="calculator__input"
+          readonly
+        />
+        <small class="calculator__helper">
+          Distance will be populated automatically
+        </small>
+      </div>
+
+      <!-- MANUAL DISTANCE -->
+      <div class="calculator__field calculator__field--checkbox">
+        <label class="calculator__checkbox-label">
+          <input
+            type="checkbox"
+            id="manual-distance"
+            class="calculator__checkbox"
+          />
+          Manual insert distance
+        </label>
+      </div>
+
+      <!-- TRANSPORT MODE -->
+      <fieldset class="calculator__transport">
+        <legend class="calculator__legend">Transport Mode</legend>
+
+        <div class="calculator__transport-grid">
+
+          <label class="calculator__transport-option">
+            <input
+              type="radio"
+              name="transport"
+              value="bicycle"
+              class="calculator__radio"
+            />
+            🚲 Bicycle
+          </label>
+
+          <label class="calculator__transport-option">
+            <input
+              type="radio"
+              name="transport"
+              value="car"
+              class="calculator__radio"
+              checked
+            />
+            🚗 Car
+          </label>
+
+          <label class="calculator__transport-option">
+            <input
+              type="radio"
+              name="transport"
+              value="bus"
+              class="calculator__radio"
+            />
+            🚌 Bus
+          </label>
+
+          <label class="calculator__transport-option">
+            <input
+              type="radio"
+              name="transport"
+              value="truck"
+              class="calculator__radio"
+            />
+            🚚 Truck
+          </label>
+
+        </div>
+      </fieldset>
+
+      <!-- SUBMIT -->
+      <button type="submit" class="calculator__submit">
+        Calculate Emission
+      </button>
+
+      <!-- DATALIST -->
+      <datalist id="city-list"></datalist>
+
+    </form>
+
+    <!-- RESULTS -->
+    <section id="results" class="results hidden">
+      <div id="result-content" class="results__content"></div>
+    </section>
+
+    <section id="comparison" class="comparison hidden">
+      <div id="comparison-content" class="comparison__content"></div>
+    </section>
+
+    <section id="carbon-credits" class="carbon-credits hidden">
+      <div id="carbon-credits-content" class="carbon-credits__content"></div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="footer__credits">
+      Developed by Rakell with 💚 for DIO | Project GitHub Copilot
+    </p>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="js/routes-data.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

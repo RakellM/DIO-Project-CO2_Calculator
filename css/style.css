@@ -1,0 +1,283 @@
+/* =========================
+   CSS CUSTOM PROPERTIES
+========================= */
+:root {
+  /* Eco-friendly color palette */
+  --primary: #10b981;
+  --secondary: #059669;
+  --accent: #34d399;
+
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --info: #3b82f6;
+
+  --text: #1f2937;
+  --text-light: #6b7280;
+  --bg: #f3f4f6;
+  --white: #ffffff;
+
+  /* Spacing scale */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+
+  /* Radius */
+  --radius: 0.5rem;
+  --radius-lg: 1rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================
+   BASE STYLES
+========================= */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+}
+
+/* Container utility */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+/* =========================
+   UTILITY CLASSES
+========================= */
+.hidden {
+  display: none !important;
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  color: var(--primary);
+}
+
+/* =========================
+   HEADER
+========================= */
+.header {
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-lg);
+  text-align: center;
+}
+
+.header__title {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.header__subtitle {
+  font-size: 0.95rem;
+  color: var(--text-light);
+}
+
+/* =========================
+   FORM / CALCULATOR
+========================= */
+.calculator {
+  background: var(--white);
+  margin: var(--spacing-xl) auto;
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  max-width: 720px;
+}
+
+.calculator__field {
+  margin-bottom: var(--spacing-lg);
+}
+
+.calculator__label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+}
+
+.calculator__input {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius);
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.calculator__input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.calculator__helper {
+  display: block;
+  margin-top: var(--spacing-xs);
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+/* =========================
+   CHECKBOX
+========================= */
+.calculator__field--checkbox {
+  margin-top: var(--spacing-sm);
+}
+
+.calculator__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: 0.9rem;
+}
+
+/* =========================
+   TRANSPORT MODE GRID
+========================= */
+.calculator__transport {
+  border: none;
+  margin-bottom: var(--spacing-lg);
+}
+
+.calculator__legend {
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+
+.calculator__transport-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+
+.calculator__radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.calculator__transport-option {
+  border: 1px solid #d1d5db;
+  border-radius: var(--radius);
+  padding: var(--spacing-md);
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.calculator__transport-option span,
+.calculator__transport-option::first-line {
+  font-size: 3rem;
+}
+
+.calculator__transport-option:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Checked state */
+.calculator__radio:checked + .calculator__transport-option {
+  border: 2px solid var(--primary);
+  background: rgba(16, 185, 129, 0.1);
+}
+
+/* =========================
+   BUTTON
+========================= */
+.calculator__submit {
+  width: 100%;
+  padding: var(--spacing-md);
+  background: var(--primary);
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.calculator__submit:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.calculator__submit:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* =========================
+   SPINNER
+========================= */
+.spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+  text-align: center;
+  padding: var(--spacing-lg);
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (min-width: 768px) {
+  .calculator__transport-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .calculator {
+    padding: var(--spacing-lg);
+  }
+}
