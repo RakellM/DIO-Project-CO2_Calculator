@@ -60,7 +60,7 @@ var CONFIG = {
   /* =========================
      POPULATE CITY DATALIST
   ========================= */
-  populateDetails: function () {
+  populateDatalist: function () {
     if (typeof RoutesDB === "undefined") {
       console.warn("RoutesDB not found. Cannot populate city list.");
       return;

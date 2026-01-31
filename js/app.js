@@ -75,9 +75,9 @@ function handleFormSubmit(event) {
   }
 
   // Hide previous results (if any)
-  UI.hideElement("results-section");
-  UI.hideElement("comparison-section");
-  UI.hideElement("carbon-credits-section");
+  UI.hideElement("results");
+  UI.hideElement("comparison");
+  UI.hideElement("carbon-credits");
 
   /* =========================
      SIMULATED PROCESSING
@@ -155,12 +155,12 @@ function handleFormSubmit(event) {
       }
 
       // Show sections
-      UI.showElement("results-section");
-      UI.showElement("comparison-section");
-      UI.showElement("carbon-credits-section");
+      UI.showElement("results");
+      UI.showElement("comparison");
+      UI.showElement("carbon-credits");
 
       // Scroll to results
-      UI.scrollToElement("results-section");
+      UI.scrollToElement("results");
     } catch (error) {
       console.error("❌ Calculation error:", error);
       alert(
