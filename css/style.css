@@ -281,3 +281,259 @@ body {
     padding: var(--spacing-lg);
   }
 }
+
+/* =====================================================
+   RESULTS / COMPARISON / CARBON CREDITS – SHARED STYLES
+===================================================== */
+
+.results,
+.comparison,
+.carbon-credits {
+  background: #ffffff;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* =====================================================
+   RESULTS SECTION
+===================================================== */
+
+.results_card {
+  display: flex;
+  align-items: center;
+  background: #f9fafb;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.results_icon {
+  font-size: 2.5rem;
+  margin-right: 1rem;
+}
+
+.results_data {
+  display: flex;
+  flex-direction: column;
+}
+
+.results_label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.results_value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.results_savings {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #ecfdf5;
+  border-left: 4px solid #10b981;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+/* =====================================================
+   COMPARISON SECTION
+===================================================== */
+
+.comparison_item {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.comparison_item--selected {
+  border-color: #2563eb;
+  background: rgba(37, 99, 235, 0.05);
+}
+
+.comparison_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.comparison_mode {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.comparison_icon {
+  font-size: 1.5rem;
+}
+
+.comparison_label {
+  font-weight: 700;
+}
+
+.comparison_badge {
+  height: 12px;
+  background: #2563eb;
+  color: #ffffff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.comparison_stats {
+  text-align: right;
+}
+
+.comparison_emission {
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.comparison_percentage {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.comparison_bar-container {
+  width: 100%;
+  height: 12px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.comparison_bar {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
+
+.comparison_tip {
+  display: flex;
+  gap: 0.75rem;
+  background: #eff6ff;
+  border-left: 4px solid #3b82f6;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 8px;
+}
+
+/* =====================================================
+   CARBON CREDITS SECTION
+===================================================== */
+
+.carbon-credits_grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.carbon-credits_card {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.carbon-credits_label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.carbon-credits_value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #2563eb;
+}
+
+.carbon-credits_hint {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+.carbon-credits_info {
+  border: 2px dashed #3b82f6;
+  background: #eff6ff;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.carbon-credits_info strong {
+  font-weight: 700;
+  color: #1d4ed8;
+}
+
+.carbon-credits_info p {
+  line-height: 1.6;
+}
+
+.carbon-credits_btn {
+  width: 100%;
+  background: #2563eb;
+  color: #ffffff;
+  padding: 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.carbon-credits_btn:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+}
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 767px) {
+  .carbon-credits_grid {
+    grid-template-columns: 1fr;
+  }
+
+  .results_value {
+    font-size: 1.25rem;
+  }
+
+  .results,
+  .comparison,
+  .carbon-credits {
+    padding: 1.25rem;
+  }
+}
