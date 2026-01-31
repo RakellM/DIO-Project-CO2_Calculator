@@ -1,124 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🌿 CO₂ Emission Calculator</title>
-  <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO₂ Emission Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="page">
+<body>
+  <div class="page">
 
-  <!-- HEADER -->
-  <header class="header">
-    <h1 class="header_title">🌿 CO₂ Emission Calculator</h1>
-    <p class="header_subtitle">
-      Estimate carbon emissions based on travel distance and transport mode.
-    </p>
-  </header>
+    <header class="header">
+        <h1 class="header__title">🌿 CO₂ Emission Calculator</h1>
+        <p class="header__subtitle">Calculate carbon emissions for your journeys and explore eco-friendly alternatives</p>
+    </header>
 
-  <!-- MAIN -->
-  <main class="main">
+    <main class="app-container">
+        <form id="calculator-form" class="calculator-form">
+            <div class="calculator-form__field">
+                <label for="origin" class="calculator-form__label">Origin</label>
+                <input type="text" id="origin" class="calculator-form__input" list="city-list" placeholder="Enter starting point" required>
+            </div>
 
-    <!-- CALCULATOR FORM -->
-    <form id="calculator-form" class="calculator">
+            <div class="calculator-form__field">
+                <label for="destination" class="calculator-form__label">Destination</label>
+                <input type="text" id="destination" class="calculator-form__input" list="city-list" placeholder="Enter destination" required>
+            </div>
 
-      <!-- ORIGIN -->
-      <div class="calculator_field">
-        <label for="origin" class="calculator_label">Origin</label>
-        <input type="text" id="origin" class="calculator_input" list="city-list" placeholder="Enter origin city" />
-      </div>
+            <datalist id="city-list">
+                <!-- Will be populated by JavaScript -->
+            </datalist>
 
-      <!-- DESTINATION -->
-      <div class="calculator_field">
-        <label for="destination" class="calculator_label">Destination</label>
-        <input type="text" id="destination" class="calculator_input" list="city-list" placeholder="Enter destination city" />
-      </div>
+            <div class="calculator-form__field">
+                <label for="distance" class="calculator-form__label">Distance (km)</label>
+                <input type="number" id="distance" class="calculator-form__input calculator-form__input--readonly" readonly>
+                <p class="calculator-form__helper">Distance will be populated automatically</p>
+            </div>
 
-      <!-- DISTANCE -->
-      <div class="calculator_field">
-        <label for="distance" class="calculator_label">Distance (km)</label>
-        <input type="number" id="distance" class="calculator_input" readonly />
-        <small class="calculator_helper">Distance will be populated automatically</small>
-      </div>
+            <div class="calculator-form__field">
+                <label class="calculator-form__checkbox">
+                    <input type="checkbox" id="manual-distance">
+                    <span class="calculator-form__checkbox-label">Manual insert distance</span>
+                </label>
+            </div>
 
-      <!-- MANUAL DISTANCE -->
-      <div class="calculator_field calculator_field--checkbox">
-        <label class="calculator_checkbox-label">
-          <input type="checkbox" id="manual-distance" class="calculator_checkbox" />
-          Manual insert distance
-        </label>
-      </div>
+            <fieldset class="calculator-form__transport">
+                <legend class="calculator-form__legend">Transport Mode</legend>
+                <div class="transport-grid">
+                    <label class="transport-grid__item">
+                        <input type="radio" name="transport" value="bicycle" class="transport-grid__input">
+                        <span class="transport-grid__content">
+                            <span class="transport-grid__emoji">🚲</span>
+                            <span class="transport-grid__text">Bicycle</span>
+                        </span>
+                    </label>
+                    
+                    <label class="transport-grid__item">
+                        <input type="radio" name="transport" value="car" class="transport-grid__input" checked>
+                        <span class="transport-grid__content">
+                            <span class="transport-grid__emoji">🚗</span>
+                            <span class="transport-grid__text">Car</span>
+                        </span>
+                    </label>
+                    
+                    <label class="transport-grid__item">
+                        <input type="radio" name="transport" value="bus" class="transport-grid__input">
+                        <span class="transport-grid__content">
+                            <span class="transport-grid__emoji">🚌</span>
+                            <span class="transport-grid__text">Bus</span>
+                        </span>
+                    </label>
+                    
+                    <label class="transport-grid__item">
+                        <input type="radio" name="transport" value="truck" class="transport-grid__input">
+                        <span class="transport-grid__content">
+                            <span class="transport-grid__emoji">🚚</span>
+                            <span class="transport-grid__text">Truck</span>
+                        </span>
+                    </label>
+                </div>
+            </fieldset>
 
-      <!-- TRANSPORT MODE -->
-      <fieldset class="calculator_transport">
-        <legend class="calculator_legend">Transport Mode</legend>
+            <button type="submit" class="calculator-form__submit">Calculate Emission</button>
+        </form>
 
-        <div class="calculator_transport-grid">
+        <section id="results" class="results hidden">
+            <h2 class="results__title">Emission Results</h2>
+            <div id="result-content" class="results__content"></div>
+        </section>
 
-          <input type="radio" name="transport" id="bicycle" value="bicycle" class="calculator_radio" />
-          <label class="calculator_transport-option" for="bicycle">
-            <span>🚲</span>
-            Bicycle
-          </label>
+        <section id="comparison" class="comparison hidden">
+            <h2 class="comparison__title">Environmental Impact Comparison</h2>
+            <div id="comparison-content" class="comparison__content"></div>
+        </section>
 
-          <input type="radio" name="transport" id="car" value="car" class="calculator_radio" checked/>
-          <label class="calculator_transport-option" for="car">
-            <span>🚗</span>
-            Car
-          </label>
+        <section id="carbon-credits" class="carbon-credits hidden">
+            <h2 class="carbon-credits__title">Carbon Offset Options</h2>
+            <div id="carbon-credits-content" class="carbon-credits__content"></div>
+        </section>
 
-          <input type="radio" name="transport" id="bus" value="bus" class="calculator_radio" />
-          <label class="calculator_transport-option" for="bus">
-            <span>🚌</span>
-            Bus
-          </label>
+    </main>
 
-          <input type="radio" name="transport" id="truck" value="truck" class="calculator_radio" />
-          <label class="calculator_transport-option" for="truck">
-            <span>🚚</span>
-            Truck
-          </label>
+    <footer class="footer">
+        <p class="footer__credits">Developed by Rakell with 💚 for DIO | Project GitHub Copilot</p>
+    </footer>
+    
+  </div>
 
-        </div>
-      </fieldset>
-
-      <!-- SUBMIT -->
-      <button type="submit" class="calculator_submit">Calculate Emission</button>
-
-      <!-- DATALIST -->
-      <datalist id="city-list"></datalist>
-
-    </form>
-
-    <!-- RESULTS -->
-    <section id="results" class="results hidden">
-      <div id="result-content" class="results__grid"></div>
-    </section>
-
-    <section id="comparison" class="comparison hidden">
-      <div id="comparison-content" class="comparison__content"></div>
-    </section>
-
-    <section id="carbon-credits" class="carbon-credits hidden">
-      <div id="carbon-credits-content" class="carbon-credits__content"></div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p class="footer_credits">
-      Developed by Rakell with 💚 for DIO | Project GitHub Copilot
-    </p>
-  </footer>
-
-  <!-- SCRIPTS -->
-  <script src="js/routes-data.js"></script>
-  <script src="js/config.js"></script>
-  <script src="js/calculator.js"></script>
-  <script src="js/ui.js"></script>
-  <script src="js/app.js"></script>
-
+    <script src="js/routes-data.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
